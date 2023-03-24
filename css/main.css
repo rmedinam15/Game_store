@@ -46,7 +46,7 @@ ul:hover li a:not(:hover){
 }
 
 .section_master{
-    background-image: url("images/background.jpg");
+    background-image: url("../images/background.jpg");
     position: absolute;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -64,6 +64,7 @@ ul:hover li a:not(:hover){
     align-items: center; /* alinear al centro verticalmente */
 }
 
+/* Destacados */
 .destacados{
     grid-area: 1 / 1 / 2 / 2;
     height: 600px;
@@ -90,6 +91,8 @@ ul:hover li a:not(:hover){
     transition: 1.5s;
 
 }
+
+/* Bestseller */
 
 .best_seller{
     grid-area: 3 / 1 / 4 / 2;
@@ -160,6 +163,8 @@ ul:hover li a:not(:hover){
     height: 27px;
     width: 100px;
 }
+
+/* Bestseller 2 */
 
 .offers{
     grid-area: 4 / 1 / 5 / 2;
