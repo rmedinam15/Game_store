@@ -49,12 +49,10 @@ ul:hover li a:not(:hover){
     background-image: url("../images/support/background.jpg");
     position: absolute;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
     width: 100%;
-    height: 130%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
@@ -115,23 +113,55 @@ ul:hover li a:not(:hover){
 
 .div_support_section{
     grid-area: 3 / 1 / 4 / 2;
-    height: 100px;
+    height: 80px;
     width: 1600px;
-    margin:0px auto;
     display:flex;
-    justify-items: center; /* alinear al centro horizontalmente */
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    
+    gap: 100px;
+    font-size: 18px;
+    margin-top: 5px;
 }
 
-.div_support_section > a{
+.div_support_section a{
     width: 366px;
     height: 80px;
     border-radius: 10px;
-    display: flex;
-    justify-items: center; /* alinear al centro horizontalmente */
-    align-items: center;
+    margin: auto;
+    text-align: center;
+    display: inline-block;
     text-decoration: none;
     background-color: #f1f3f4;
     color: black;
+}
+
+/* Underline From Left */
+.hvr-underline-from-left {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+  .hvr-underline-from-left:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    background: #2098D1;
+    height: 4px;
+    -webkit-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+  .hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
+    right: 0;
 }
