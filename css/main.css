@@ -56,13 +56,14 @@ ul:hover li a:not(:hover){
     width: 100%;
     height: 110%;
     display: grid;
+    display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     justify-items: center; /* alinear al centro horizontalmente */
     align-items: center; /* alinear al centro verticalmente */
-    grid-template-rows: 600px 210px 210px
+    grid-template-rows: 600px 450px
 }
 
 /* Destacados */
@@ -93,33 +94,31 @@ ul:hover li a:not(:hover){
 
 }
 
-/* Offers 1 */
-
-.best_seller{
+/* Offers */
+.div_offers{
     grid-area: 2 / 1 / 3 / 2;
     display: flex;
-    justify-content: space-between;  /* Centrado en eje X */ 
-    align-items: center; /* Centrado en eje Y */
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 20px;
     width: 1500px;
-    height: 185px;
-    margin: 0;
-}
-.item_best_seller{
-    width: 276px;
-    height: 185px;
 }
 
-.best_seller .item_best_seller img{
+.item_offer{
+    width: 276px;
+    height: 186px;
+}
+
+.div_offers .item_offer img{
     width: 276px;
     height: 153px;
     cursor: pointer;
     transition: 1s;
 }
 
-.best_seller img:hover{
+.item_offer img:hover{
     transform:scale(1.1);
     transition: 1.5s;
-
 }
 
 .discount{
@@ -163,31 +162,4 @@ ul:hover li a:not(:hover){
     justify-content: center;
     height: 27px;
     width: 100px;
-}
-
-/* Offers 2 */
-
-.offers{
-    grid-area: 3 / 1 / 4 / 2; 
-    display: flex;
-    justify-content: space-between;  /* Centrado en eje X */ 
-    align-items: center; /* Centrado en eje Y */
-    width: 1500px;
-    height: 160px;
-}
-.item_offer{
-    width: 276px;
-    height: 186px;
-}
-
-.offers .item_offer img{
-    width: 276px;
-    height: 153px;
-    cursor: pointer;
-    transition: 1s;
-}
-
-.offers img:hover{
-    transform:scale(1.1);
-    transition: 1.5s;
 }
