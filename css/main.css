@@ -46,7 +46,7 @@ ul:hover li a:not(:hover){
 }
 
 .section_master{
-    background-image: url("../images/background.jpg");
+    background: #23242a;
     position: absolute;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -86,6 +86,7 @@ ul:hover li a:not(:hover){
     height: 450px;
     cursor: pointer;
     transition: 1s;
+    border-radius: 1%;
 }
 
 .item img:hover{
@@ -114,6 +115,7 @@ ul:hover li a:not(:hover){
     height: 153px;
     cursor: pointer;
     transition: 1s;
+    border-radius: 1%
 }
 
 .item_offer img:hover{

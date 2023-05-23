@@ -46,7 +46,7 @@ ul:hover li a:not(:hover){
 }
 
 .section_master_category{
-    background-image: url("../images/categories/background.png");
+    background: #23242a;
     position: absolute;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -91,6 +91,7 @@ img{
     height: 200px;
     cursor: pointer;
     transition: 1s;
+    border-radius: 1%
 }
 
 img:hover{
