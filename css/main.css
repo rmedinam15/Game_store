@@ -6,7 +6,7 @@ body {
     margin: 0px;
 }
 
-header{
+nav{
     background: #171717;
     height: 100px;
     text-align: center;
@@ -14,6 +14,9 @@ header{
     justify-content: center;
     align-items: center;
 }
+
+
+
 ul{
     display: flex;
     gap: 72px;
@@ -44,6 +47,7 @@ ul:hover li a:not(:hover){
     opacity: 0.3;
     filter: blur(1px);
 }
+
 
 .section_master{
     background: #23242a;
