@@ -7,15 +7,17 @@
     <title>Categories</title>
     <link rel="stylesheet" href="../css/categories.css">
     <link rel="icon" type="image/x-icon" href="../images/game_icon.png">
+    <script type="module" src="../main.js"></script>
 </head>
 <body>
     <header>
         <ul>
             <li><a href="../index.html">Store</a></li>
             <li><a href="categories.html">Categories</a></li>
-            <li><a href="support.html">Support</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li class="logged-in"><a href="support.html">Support</a></li>
+            <li class="logged-in"><a href="#">Profile</a></li>
+            <li class="logged-out"><a href="login.html">Login</a></li>
+            <li class="logged-in"><a href="#" id="logout">Logout</a></li>
         </ul>
     </header>
     <section class="section_master_category">

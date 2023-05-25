@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,10 +19,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-
 const signupForm = document.querySelector('#signup-form');
 const signinForm = document.querySelector('#login-form');
 const logout = document.querySelector('#logout');
+
+
+const loggedOutLinks = document.querySelectorAll(".logged-out")
+const loggedInLinks = document.querySelectorAll(".logged-in")
+
+//NAVBAR
+const loginCheck = user =>{
+    if (user) {
+        loggedInLinks.forEach(link => link.style.display = 'block');
+        loggedOutLinks.forEach(link => link.style.display = 'none');
+    } else{
+        loggedInLinks.forEach(link => link.style.display = 'none');
+        loggedOutLinks.forEach(link => link.style.display = 'block');
+    }
+}
+
 
 // SIGN UP
 if (signupForm){
@@ -63,7 +78,7 @@ signinForm.addEventListener('submit', (e) => {
         // Signed in
         console.log("sign in with email")
         signupForm.reset();
-        location.href = "../index.html";
+        location.href = "index.html";
         // ...
     })
     .catch((error) => {
@@ -91,3 +106,17 @@ logout.addEventListener('click', (e) => {
     });
 });
 }
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+      loginCheck(user);
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      loginCheck(user);
+    }
+  });
