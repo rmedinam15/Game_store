@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,14 +20,26 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getDatabase();
 
 const signupForm = document.querySelector('#signup-form');
 const signinForm = document.querySelector('#login-form');
 const logout = document.querySelector('#logout');
 
-
 const loggedOutLinks = document.querySelectorAll(".logged-out")
 const loggedInLinks = document.querySelectorAll(".logged-in")
+
+let spots = document.querySelectorAll("#spot")
+let spotPercent = document.querySelectorAll("#percent")
+let spotNoDiscount = document.querySelectorAll("#no-discount")
+let spotYesDiscount = document.querySelectorAll("#yes-discount")
+
+// let spotsPercent = document.querySelectorAll(".percent")
+
+// const spotDiscount1 = document.getElementById("discount-1")
+// const percentDiscount1 = document.getElementById("percent-discount-1")
+// const noDiscount1 = document.getElementById("no-discount-1")
+// const yesDiscount1 = document.getElementById("yes-discount-1")
 
 //NAVBAR
 const loginCheck = user =>{
@@ -37,7 +51,6 @@ const loginCheck = user =>{
         loggedOutLinks.forEach(link => link.style.display = 'block');
     }
 }
-
 
 // SIGN UP
 if (signupForm){
@@ -107,11 +120,12 @@ logout.addEventListener('click', (e) => {
 });
 }
 
+// AUTH CHANGED
 onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      const uid = user.uid;
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
       loginCheck(user);
       // ...
     } else {
@@ -120,3 +134,41 @@ onAuthStateChanged(auth, (user) => {
       loginCheck(user);
     }
   });
+
+// GET DATA REAL TIME DB
+if(spots){
+    onValue(ref(db, '/videogames'),(snapshot) => {
+        // console.log(snapshot.val());
+        let data = snapshot.val();
+        // spot1.src = data[0].image;
+        // spot2.src = data[1].image;
+        // spot3.src = data[2].image;
+        
+        // spotDiscount1.src = data[3].image;
+        // percentDiscount1.innerHTML = "-"+data[3].discount+"%";
+        // noDiscount1.innerHTML = "COL$ " + data[3].price;
+        // let newPrice = data[3].price - (data[3].price * (data[3].discount / 100));
+        // yesDiscount1.innerHTML = "COL$ " + newPrice;
+        console.log(spotPercent)
+        console.log(spotNoDiscount)
+        console.log(spotYesDiscount)
+        for(let i = 0; 12; i++){
+            spots[i].src = data[i].image; 
+            if( i >= 3){
+                spotPercent[i-3].innerHTML = "-"+data[i].discount+"%";
+                spotNoDiscount[i-3].innerHTML = "COL$ " + data[i].price;
+                let newPrice = data[i].price - (data[i].price * (data[i].discount / 100));
+                spotYesDiscount[i-3].innerHTML = "COL$ " + newPrice;
+            }
+        }
+
+        // console.log(spotsDiscount);
+        // for(let i = 0; 10; i++){
+        //     spotsDiscount[i].src = data[i].image;
+        //     // spotsPercent[i].innerHTML = data[i].discount;
+        // }
+    });
+}
+
+
+//
