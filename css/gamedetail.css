@@ -1,0 +1,185 @@
+*{
+    font-family: "Motiva Sans", Sans-serif;
+}
+body{
+    background-color: #121212;  
+}
+header{
+    background: #171717;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ul-nav{
+    display: flex;
+    gap: 72px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+} 
+.ul-nav li{
+    list-style: none;
+}
+.ul-nav li a{
+    margin: 6em auto;
+    font-size: 26px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px;
+    transition: 0.5s ease;
+}
+
+.ul-nav:hover li a{
+    color: #30edf4;
+}
+
+.ul-nav:hover li a:not(:hover){
+    color: white;
+    opacity: 0.3;
+    filter: blur(1px);
+}
+.section-master{
+    width: 75%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.game-title {
+    margin-top: 100px;
+    color: #ffffff;
+}
+.game-desciption {
+    margin-top: 20px;
+} 
+#game-detail-description{
+    color: #ffffff
+}
+.container-master{
+    display: flex;
+    flex-direction: row;
+}
+.game-container {
+    width: calc(100% - 450px);
+    height: 800px;
+}
+.game-container iframe{
+    width: 100%;
+    height: 70%;
+}
+.game-detail {
+    height: 100%;
+    width: 400px;
+    margin-left: auto;
+
+}
+.discount{
+    display: flex;
+    height: 27px;
+    width: 273px;
+    text-align: center;
+    align-items: center;
+}
+
+.discount #percent{
+    display: flex;
+    font-weight: bold;
+    background-color: rgb(0, 116, 228);
+    color: #fff;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+    height: 27px;
+    width: 53px
+}
+
+.discount #notdiscount{
+    display: flex;
+    font-weight: bold;
+    text-decoration:line-through;
+    color: #848E94;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    height: 27px;
+    width: 100px;
+}
+
+.discount #yesdiscount{
+    display: flex;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    height: 27px;
+    width: 100px;
+}
+
+.container-btns{
+    margin-top: 10px;
+}
+.btn-buy{
+    border-radius: 4px;
+    background-color: rgb(0, 116, 228);
+    color: #ffffff;
+    height: 40px;
+    width: 100%;
+    margin: 0;
+    border: 0;
+}
+.btn-buy:hover{
+    background-color: rgb(65, 141, 213);
+    transition: 0.5s;
+    cursor: pointer;
+}
+.btn-add-cart{
+    border-radius: 4px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    height: 40px;
+    width: 100%;
+    margin: 0;
+}
+.btn-add-cart:hover{
+    background-color: rgb(106, 106, 106);
+    transition: 0.5s;
+    cursor: pointer;
+}
+.div-title-spec{
+    color: #ffffff;
+}
+.container-spec-tech{
+    background-color: #202020;
+    padding: 20px;
+    border-radius: 6px;
+}
+.subcontainer-spec-tech{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.minimum-spec-tech {
+    width: 50%;
+}
+.recommended-spec-tech{
+    width:  50%;
+}
+.title-spec-tech{
+    margin-right: auto;
+    text-align: center;
+}
+.ul-spec-tech {
+    list-style: none;
+    color: #fff;
+}
+.li-spec-tech{
+    color: #f5f5f599;
+}
+footer{
+    height: 100px;
+}

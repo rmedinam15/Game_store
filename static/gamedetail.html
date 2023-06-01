@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game detail</title>
+    <link rel="stylesheet" href="../css/gamedetail.css">
+    <link rel="icon" type="image/x-icon" href="../images/game_icon.png">
+    <script type="module" src="../main.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCw6-UulmRdQBWKomg9nDo0zdfAYqGje8c",
+            authDomain: "game-store-rmedinam15.firebaseapp.com",
+            databaseURL: "https://game-store-rmedinam15-default-rtdb.firebaseio.com",
+            projectId: "game-store-rmedinam15",
+            storageBucket: "game-store-rmedinam15.appspot.com",
+            messagingSenderId: "88084132275",
+            appId: "1:88084132275:web:94879318d491a25d6b5bc6"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        let gameTitle = document.getElementById("game-title");
+        let gameIframe = document.getElementById("game-iframe");
+        let gameDetail = document.getElementById("game-detail-description");
+        let gamePercent = document.getElementById("percent");
+        let gameNoDiscount = document.getElementById("notdiscount");
+        let gameYesDiscount = document.getElementById("yesdiscount");
+
+        if(gameTitle){
+            let responseLocalStorage = localStorage.getItem('request');
+            let response = JSON.parse(responseLocalStorage);
+
+            console.log(response)
+
+            gameTitle.textContent = response.name;
+            gameIframe.src = response.demo;
+            gameDetail.textContent = response.description;
+    
+            if(response.discount > 0){
+                gamePercent.innerHTML = "-"+response.discount+"%";
+                gameNoDiscount.innerHTML = "COL$ " + response.price;
+                let newPrice = response.price - (response.price * (response.discount / 100));
+                gameYesDiscount.innerHTML = "COL$ " + newPrice;
+            }else{
+                gameNoDiscount.innerHTML = "COL$ " + response.price;
+            }
+        }
+        else{
+            console.log("Dont exist");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <ul class="ul-nav">
+            <li><a href="../index.html">Store</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li class="logged-in"><a href="support.html">Support</a></li>
+            <li class="logged-in"><a href="#">Profile</a></li>
+            <li class="logged-out"><a href="login.html">Login</a></li>
+            <li class="logged-in"><a href="#" id="logout">Logout</a></li>
+        </ul>
+    </header>
+    
+    <section class="section-master">
+        <h1 class="game-title" id="game-title">GAME NAME</h1>
+
+        <div class="container-master">
+            <div class="game-container">
+                <iframe src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="game-iframe"></iframe>
+                <div class="container-specification">
+                    <div class="div-title-spec">
+                        <h2>Specifications</h2>
+                    </div>
+                    <div class="container-spec-tech">
+                        <div class="subcontainer-spec-tech">
+                            <div class="minimum-spec-tech">
+                                <div class="title-spec-tech">
+                                    <span class="li-spec-tech">MINIMUM</span>
+                                </div>
+                                <div>
+                                    <ul class="ul-spec-tech">
+                                        <li>
+                                            <span class="li-spec-tech">OS</span> <br>
+                                            Windows 10 64-bit
+                                        </li><br>
+                                        <li>
+                                            <span class="li-spec-tech">Processor</span> <br>
+                                            Intel i5-2500k (4 core 3.3 GHz) or AMD Ryzen 3 1200 (4 core 3.1 GHz)
+                                        </li><br>
+                                        <li>
+                                            <span class="li-spec-tech">Memory</span> <br>
+                                            8 GB DDR
+                                        </li><br>
+                                        <li>
+                                            <span class="li-spec-tech">Storage</span> <br>
+                                            70 GB HDD (SSD Recommended)
+                                        </li><br>
+                                        <li>
+                                            <span class="li-spec-tech">Direct X</span> <br>
+                                            DirectX 11 (feature level 11_1)
+                                        </li><br>
+                                        <li>
+                                            <span class="li-spec-tech">Graphics</span> <br>
+                                            NVIDIA GTX 960 (4 GB) or AMD R9 290X (4 GB)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="recommended-spec-tech">
+                                <div>
+                                    <div class="title-spec-tech">
+                                        <span class="li-spec-tech">RECOMMENDED</span>
+                                    </div>
+                                    <div>
+                                        <ul class="ul-spec-tech">
+                                            <li>
+                                                <span class="li-spec-tech">OS</span> <br>
+                                                Windows 10 64-bit
+                                            </li><br>
+                                            <li>
+                                                <span class="li-spec-tech">Processor</span> <br>
+                                                Intel i5-6600k (4 core 3.5 GHz) or AMD Ryzen 5 2400 G (4 core 3.6 GHz)
+                                            </li><br>
+                                            <li>
+                                                <span class="li-spec-tech">Memory</span> <br>
+                                                8 GB DDR
+                                            </li><br>
+                                            <li>
+                                                <span class="li-spec-tech">Storage</span> <br>
+                                                70 GB HDD (SSD Recommended)
+                                            </li><br>
+                                            <li>
+                                                <span class="li-spec-tech">Direct X</span> <br>
+                                                DirectX 11 (feature level 11_1)
+                                            </li><br>
+                                            <li>
+                                                <span class="li-spec-tech">Graphics</span> <br>
+                                                NVIDIA GTX 1060 (6 GB) or AMD RX 570 (4 GB)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="li-spec-tech">LANGUAGES SUPPORTED</span><br>
+                            <ul class="ul-spec-tech">
+                                <li>
+                                    <span class="li-spec-tech">Audio</span><br>
+                                    English, French, German, Italian, Japanese, Polish, Portuguese, Portuguese - Brazil, Russian, Spanish - Spain, Spanish - Latin America
+                                </li><br>
+                                <li>
+                                    <span class="li-spec-tech">Text</span><br>
+                                    English, Dutch, French, German, Italian, Japanese, Korean, Polish, Portuguese, Portuguese - Brazil, Russian, Spanish - Spain, Spanish - Latin America, Turkish, Chinese - Traditional, Hungarian, Czech, Greek
+                                </li><br>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="game-detail" >
+                <div id="game-detail-description">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut odit exercitationem delectus id saepe eveniet, quae repellat ullam blanditiis eligendi, beatae omnis nisi dolores sed neque a obcaecati velit possimus?
+                    Est qui tempore asperiores tenetur voluptas sit aut quo officia magnam cumque labore ullam, cum vitae earum totam sapiente, perferendis at quasi vel a iste non. Distinctio quia minima sequi.
+                    Sequi, ea eius odit id hic blanditiis itaque, accusamus mollitia perspiciatis repellat explicabo quo provident sint odio recusandae? Dolorem soluta voluptates sequi, dignissimos nobis laboriosam. Officiis molestiae quibusdam doloremque? Pariatur.</p>
+                </div><br>
+                <div>
+                    <span id="game-detail-description">Price</span>
+                    <div class="discount">
+                        <div id="percent"></div>
+                        <div id="notdiscount"></div>
+                        <div id="yesdiscount"></div>
+                    </div>
+                </div>
+                <div class="container-btns">
+                    <button class="btn-buy">
+                        <span>BUY NOW</span>
+                    </button>
+                </div>
+                <div class="container-btns">
+                    <button class="btn-add-cart">
+                        <span>ADD TO CART</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

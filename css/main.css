@@ -83,6 +83,8 @@ ul:hover li a:not(:hover){
 .item{
     width: 375px;
     height: 450px;
+    background-color: transparent;
+    border: none;
 }
 
 .destacados .item img{   

@@ -34,12 +34,16 @@ let spotPercent = document.querySelectorAll("#percent")
 let spotNoDiscount = document.querySelectorAll("#no-discount")
 let spotYesDiscount = document.querySelectorAll("#yes-discount")
 
-// let spotsPercent = document.querySelectorAll(".percent")
+let btnSpot1 = document.getElementById('btn-spot1');
 
-// const spotDiscount1 = document.getElementById("discount-1")
-// const percentDiscount1 = document.getElementById("percent-discount-1")
-// const noDiscount1 = document.getElementById("no-discount-1")
-// const yesDiscount1 = document.getElementById("yes-discount-1")
+let gameTitle = document.getElementById("game-title");
+let gameIframe = document.getElementById("game-iframe");
+let gameDetail = document.getElementById("game-detail-description");
+let gamePercent = document.getElementById("percent");
+let gameNoDiscount = document.getElementById("notdiscount");
+let gameYesDiscount = document.getElementById("yesdiscount");
+
+
 
 //NAVBAR
 const loginCheck = user =>{
@@ -90,14 +94,12 @@ signinForm.addEventListener('submit', (e) => {
     signInWithEmailAndPassword(auth, loginEmail, loginPassword).then((userCredential) => {
         // Signed in
         console.log("sign in with email")
+        window.location.href = "../index.html";
         signupForm.reset();
-        location.href = "index.html";
-        // ...
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
     });
 });
 }
@@ -110,12 +112,10 @@ logout.addEventListener('click', (e) => {
     signOut(auth).then(() => {
         // Signed in
         console.log("sign out with email")
-        // ...
     })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
     });
 });
 }
@@ -123,14 +123,10 @@ logout.addEventListener('click', (e) => {
 // AUTH CHANGED
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
       loginCheck(user);
-      // ...
     } else {
       // User is signed out
-      // ...
       loginCheck(user);
     }
   });
@@ -138,20 +134,8 @@ onAuthStateChanged(auth, (user) => {
 // GET DATA REAL TIME DB
 if(spots){
     onValue(ref(db, '/videogames'),(snapshot) => {
-        // console.log(snapshot.val());
         let data = snapshot.val();
-        // spot1.src = data[0].image;
-        // spot2.src = data[1].image;
-        // spot3.src = data[2].image;
-        
-        // spotDiscount1.src = data[3].image;
-        // percentDiscount1.innerHTML = "-"+data[3].discount+"%";
-        // noDiscount1.innerHTML = "COL$ " + data[3].price;
-        // let newPrice = data[3].price - (data[3].price * (data[3].discount / 100));
-        // yesDiscount1.innerHTML = "COL$ " + newPrice;
-        console.log(spotPercent)
-        console.log(spotNoDiscount)
-        console.log(spotYesDiscount)
+
         for(let i = 0; 12; i++){
             spots[i].src = data[i].image; 
             if( i >= 3){
@@ -161,14 +145,24 @@ if(spots){
                 spotYesDiscount[i-3].innerHTML = "COL$ " + newPrice;
             }
         }
-
-        // console.log(spotsDiscount);
-        // for(let i = 0; 10; i++){
-        //     spotsDiscount[i].src = data[i].image;
-        //     // spotsPercent[i].innerHTML = data[i].discount;
-        // }
     });
 }
 
+if (btnSpot1){
+    btnSpot1.addEventListener('click', () =>{
+        let id_game = 0;
+        createFrontGame(id_game);
+        window.location.href = "./static/gamedetail.html";
+    });
+}
 
-//
+function createFrontGame(id_game){
+    onValue(ref(db, `/videogames/${id_game}`),(snapshot) => {
+
+        let data = snapshot.val();
+        console.log(data);
+
+        let request = JSON.stringify(data);
+        localStorage.setItem('request', request);
+    });
+};
